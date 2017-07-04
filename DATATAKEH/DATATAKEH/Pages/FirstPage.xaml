@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DATATAKEH.Pages.FirstPage"
+             BackgroundColor="{StaticResource BackgroundColor}"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             Title="Datos Iniciales">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="logo" Order="Primary" Icon="logo_barra.png" Priority="0" />
+        <ToolbarItem Name="Cerrar Sesión" Order="Secondary" Command="{Binding NavigateCommand}"
+                     CommandParameter="LogoutPage"/>
+    </ContentPage.ToolbarItems>
+    <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
+        <StackLayout  BindingContext="{Binding NewProject}"
+            HorizontalOptions="FillAndExpand" VerticalOptions="Start"  Spacing="20" Padding="20">
+            <Picker Title="Proyecto" SelectedItem="{Binding ProjectName}">
+                <Picker.Items>
+                    <x:String>Proyecto 1</x:String>
+                    <x:String>Proyecto 2</x:String>
+                    <x:String>Proyecto 3</x:String>
+                    <x:String>Proyecto 6</x:String>
+                </Picker.Items>
+            </Picker>
+            <Picker Title="Ciudad" SelectedItem="{Binding Ciudad}" >
+                <Picker.Items>
+                    <x:String>Neiva</x:String>
+                </Picker.Items>
+            </Picker>
+            <Picker Title="Empresa propietaria" SelectedItem="{Binding EmpresaPropietaria}">
+                <Picker.Items>
+                    <x:String>Empresa 1</x:String>
+                </Picker.Items>
+            </Picker>
+            <Picker Title="Empresa operadora" SelectedItem="{Binding EmpresaOperadora}">
+                <Picker.Items>
+                    <x:String>Empresa 1</x:String>
+                </Picker.Items>
+            </Picker>
+            <Button
+             Command="{Binding ProjectCommand}"
+             Text="Continuar"
+             BackgroundColor="{StaticResource MainColor}"
+             TextColor="{StaticResource BackgroundColor}"           
+             HorizontalOptions="Center"
+             VerticalOptions="Center">
+            </Button>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

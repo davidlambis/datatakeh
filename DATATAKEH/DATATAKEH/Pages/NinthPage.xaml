@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DATATAKEH.Pages.NinthPage"
+             BackgroundColor="{StaticResource BackgroundColor}"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="logo" Order="Primary" Icon="logo_barra.png" Text="Item 1" Priority="0" />
+        <ToolbarItem Name="Cerrar Sesión" Order="Secondary" Command="{Binding NavigateCommand}"
+                     CommandParameter="LogoutPage"/>
+    </ContentPage.ToolbarItems>
+
+    <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
+        <StackLayout BindingContext="{Binding NewDirection}"
+            HorizontalOptions="FillAndExpand" VerticalOptions="Start" Padding="20" Spacing="20">
+            <Label
+                Text="DIRECCIÓN/OBSERVACIONES" 
+                TextColor="{StaticResource FontColor}" 
+                FontSize="24" 
+                FontAttributes="Bold" 
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                VerticalOptions="Center">
+            </Label>
+            <BoxView
+            HeightRequest="3"
+            Color="{StaticResource AccentColor}">
+            </BoxView>
+            <Picker Title="Departamento" SelectedItem="{Binding Departamento}">
+                    <Picker.Items>
+                    <x:String>Huila</x:String>
+                </Picker.Items>
+            </Picker>
+            <Picker Title="Municipio" SelectedItem="{Binding Municipio}">
+                <Picker.Items>
+                    <x:String>Algeciras</x:String>
+                    <x:String>Garzón</x:String>
+                    <x:String>La Plata</x:String>
+                    <x:String>Neiva</x:String>
+                </Picker.Items>
+            </Picker>
+            <Picker Title="Barrio" SelectedItem="{Binding Barrio}">
+                <Picker.Items>
+                    <x:String>Cándido</x:String>
+                    <x:String>Galindo</x:String>
+                    <x:String>Granjas</x:String>
+                    <x:String>Monserrate</x:String>
+                    <x:String>N/A</x:String>
+                </Picker.Items>
+            </Picker>
+            <Entry
+             Text ="{Binding Direccion, Mode=TwoWay}"                     
+             Placeholder="Dirección"
+             TextColor="{StaticResource FontColor}">
+            </Entry>
+            <Entry
+             Text ="{Binding Observaciones, Mode=TwoWay}"         
+             Placeholder="Observaciones"
+             TextColor="{StaticResource FontColor}">
+            </Entry>
+            <Button
+             Command="{Binding DirectionCommand}"
+             Text="Continuar"
+             BackgroundColor="{StaticResource MainColor}"
+             TextColor="{StaticResource BackgroundColor}"           
+             HorizontalOptions="Center"
+             VerticalOptions="Center">
+            </Button>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

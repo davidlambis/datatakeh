@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DATATAKEH.Pages.FotoPage"
+             xmlns:custom="clr-namespace:DATATAKEH.Controls;assembly=DATATAKEH"
+             Title="Registro Fotográfico"
+             BackgroundColor="{StaticResource BackgroundColor}"
+             x:Name="ThePage" >
+
+   
+
+    <!-- <Label
+                Text="REGISTRO FOTOGRÁFICO" 
+                TextColor="{StaticResource FontColor}" 
+                FontSize="24" 
+                HorizontalTextAlignment="Center"
+                FontAttributes="Bold" 
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="Center">
+            </Label>
+            <BoxView
+            HeightRequest="3"
+            Color="{StaticResource AccentColor}">
+            </BoxView> -->
+    <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition
+					Height="200">
+                </RowDefinition>
+                <RowDefinition
+					Height="128">
+                </RowDefinition>
+                <RowDefinition
+					Height="Auto">
+                </RowDefinition>
+                <RowDefinition
+					Height="Auto">
+                </RowDefinition>
+                <RowDefinition
+					Height="Auto">
+                </RowDefinition>
+            </Grid.RowDefinitions>
+            <Image
+				Source="{Binding PreviewImage}"
+				Grid.Row="0"
+               >
+            </Image>
+            <custom:ImageGallery
+				ItemsSource="{Binding Images}"
+				Grid.Row="1" >
+                <custom:ImageGallery.ItemTemplate>
+                    <DataTemplate>
+                        <Image
+							Source="{Binding Source}"
+							Aspect="AspectFit">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer
+									Command="{Binding Path=BindingContext.PreviewImageCommand, Source={x:Reference ThePage}}"
+									CommandParameter="{Binding ImageId}" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </DataTemplate>
+                </custom:ImageGallery.ItemTemplate>
+            </custom:ImageGallery>
+            <Entry
+                Grid.Row="2"  
+                Text ="{Binding NombreFoto, Mode=TwoWay}"
+                Placeholder="Nombre Foto"
+                TextColor="{StaticResource FontColor}">
+            </Entry>
+            <Button
+				Grid.Row="3"  
+				Text="Tomar Foto"
+				Command="{Binding CameraCommand}"
+                BackgroundColor="{StaticResource MainColor}"
+                TextColor="{StaticResource BackgroundColor}" 
+                >
+            </Button>
+            <Button
+              Grid.Row="4"
+		      Text="Continuar"
+              Command="{Binding NavigateCommand}"
+              BackgroundColor="{StaticResource MainColor}"
+             TextColor="{StaticResource BackgroundColor}"   >
+            </Button>
+        </Grid>
+    </ScrollView>
+    <!-- <Button
+             Command="{Binding NavigateCommand}"
+             CommandParameter="NinthPage"
+             Text="Continuar"
+             BackgroundColor="{StaticResource MainColor}"
+             TextColor="{StaticResource BackgroundColor}"           
+             HorizontalOptions="Center"
+             VerticalOptions="Center"> 
+            </Button>-->
+
+</ContentPage>

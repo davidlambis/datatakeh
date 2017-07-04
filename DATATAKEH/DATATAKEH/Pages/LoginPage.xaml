@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundColor="{StaticResource BackgroundColor}"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             x:Class="DATATAKEH.Pages.LoginPage">
+
+    <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
+        <StackLayout BindingContext="{Binding NewLogin}"
+            HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Spacing="20" Padding="20">
+            <Image
+                Source="logo.png"
+                WidthRequest="160"
+                HeightRequest="160"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+            </Image>
+            <Entry
+             Text ="{Binding Cedula, Mode=TwoWay}"
+             Keyboard="Numeric"
+             Placeholder="Número de Cédula"
+             TextColor="{StaticResource FontColor}">
+            </Entry>
+            <Entry
+             Text ="{Binding Password, Mode=TwoWay}"
+             Placeholder="Contraseña"
+             IsPassword="True"
+             TextColor="{StaticResource FontColor}">
+            </Entry>
+            <Button
+             Command="{Binding LoginCommand}"
+             Text="Ingresar"
+             BackgroundColor="{StaticResource MainColor}"
+             TextColor="{StaticResource BackgroundColor}"           
+             HorizontalOptions="Center"
+             VerticalOptions="Center">
+            </Button>
+            <ActivityIndicator
+                IsRunning="{Binding IsRunning}">
+            </ActivityIndicator>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <Label 
+                  Text="No Cerrar Sesión"
+                  HorizontalOptions="Center"
+                  VerticalOptions="Center">
+                </Label>
+                <Switch                
+                  IsToggled="{Binding IsRemembered, Mode=TwoWay}"
+                  HorizontalOptions="Center"
+                  VerticalOptions="Center">
+                </Switch>
+            </StackLayout>
+            <Label 
+                 Text="¿ Has olvidado tu Contraseña ? "
+                 TextColor="{StaticResource MainColor}"
+                 HorizontalOptions="Center"
+                 VerticalOptions="Center">
+            </Label>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

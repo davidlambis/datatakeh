@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DATATAKEH.FifthPage"
+             BackgroundColor="{StaticResource BackgroundColor}"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="logo" Order="Primary" Icon="logo_barra.png" Text="Item 1" Priority="0" />
+        <ToolbarItem Name="Cerrar Sesión" Order="Secondary" Command="{Binding NavigateCommand}"
+                     CommandParameter="LogoutPage"/>
+    </ContentPage.ToolbarItems>
+
+    <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
+        <StackLayout BindingContext="{Binding NewVano}"
+            HorizontalOptions="FillAndExpand" VerticalOptions="Start" Spacing="20" Padding="20">
+
+            <Label
+                Text="VANO" 
+                TextColor="{StaticResource FontColor}" 
+                FontSize="24" 
+                FontAttributes="Bold" 
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+            </Label>
+            <BoxView
+            HeightRequest="3"
+            Color="{StaticResource AccentColor}">
+            </BoxView>
+            <Picker Title="Seleccione Vano" SelectedItem="{Binding TipoVano}">
+                <Picker.Items>
+                    <x:String>P1</x:String>
+                    <x:String>P2</x:String>
+                </Picker.Items>
+            </Picker>
+            <Entry
+             Text ="{Binding Reserva, Mode=TwoWay}"    
+             Keyboard="Numeric"
+             Placeholder="Reserva(m)"
+             TextColor="{StaticResource FontColor}">
+            </Entry>
+            <Entry
+             Text ="{Binding LongitudVano, Mode=TwoWay}"    
+             Keyboard="Numeric"
+             Placeholder="Longitud Vano(m)"
+             TextColor="{StaticResource FontColor}">
+            </Entry>
+            <Picker Title="Tipo de cable red EH" SelectedItem="{Binding TipoCableRed}">
+                <Picker.Items>
+                    <x:String>Aluminio Desnudo</x:String>
+                    <x:String>Aluminio Aislado</x:String>
+                    <x:String>Trenzado</x:String>
+                    <x:String>Cobre Aislado</x:String>
+                    <x:String>Cobre Desnudo</x:String>
+                </Picker.Items>
+            </Picker>
+            <Picker Title="Tipo de cable Comunicación" SelectedItem="{Binding TipoCableComunicacion}" >
+                <Picker.Items>
+                    <x:String>Fibra</x:String>
+                    <x:String>Coaxial RG6</x:String>
+                    <x:String>Coaxial RG11</x:String>
+                    <x:String>Coaxial 500</x:String>
+                    <x:String>Otros</x:String>
+                </Picker.Items>
+            </Picker>
+            <Button
+             Command="{Binding VanoCommand}"
+             Text="Continuar"
+             BackgroundColor="{StaticResource MainColor}"
+             TextColor="{StaticResource BackgroundColor}"           
+             HorizontalOptions="Center"
+             VerticalOptions="Center">
+            </Button>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

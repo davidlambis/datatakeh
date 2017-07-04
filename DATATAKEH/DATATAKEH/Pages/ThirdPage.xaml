@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DATATAKEH.Pages.ThirdPage"
+             BackgroundColor="{StaticResource BackgroundColor}"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="logo" Order="Primary" Icon="logo_barra.png" Text="Item 1" Priority="0" />
+        <ToolbarItem Name="Cerrar Sesión" Order="Secondary" Command="{Binding NavigateCommand}"
+                     CommandParameter="LogoutPage"/>
+    </ContentPage.ToolbarItems>
+
+    <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
+        <StackLayout BindingContext="{Binding NewPoste}"
+            HorizontalOptions="FillAndExpand" VerticalOptions="Start" Padding="20" Spacing="20">
+            <Picker Title="Cantidad de retenidas" SelectedItem="{Binding CantidadRetenidas}">
+                <Picker.Items>
+                    <x:String>1</x:String>
+                    <x:String>2</x:String>
+                    <x:String>3</x:String>
+                    <x:String>4</x:String>
+                </Picker.Items>
+            </Picker>
+            <Picker Title="Propiedad" SelectedItem="{Binding Propiedad}">
+                <Picker.Items>
+                    <x:String>ElectroHuila</x:String>
+                    <x:String>Gobernación</x:String>
+                    <x:String>Municipio</x:String>
+                    <x:String>Particular</x:String>
+                </Picker.Items>
+            </Picker>
+            <Picker Title="Nivel de Tensión"  SelectedItem="{Binding NivelTension}">
+                <Picker.Items>
+                    <x:String>1</x:String>
+                    <x:String>2</x:String>
+                    <x:String>3</x:String>
+                    <x:String>12</x:String>
+                </Picker.Items>
+            </Picker>
+            <Entry
+             Text ="{Binding AlturaDisponible, Mode=TwoWay}"
+             Keyboard="Numeric"
+             Placeholder="Altura disponible (m) "
+             TextColor="{StaticResource FontColor}">
+            </Entry>
+            <Entry
+             Text ="{Binding AlturaMontaje, Mode=TwoWay}"
+             Keyboard="Numeric"
+             Placeholder="Altura de montaje (m) "
+             TextColor="{StaticResource FontColor}">
+            </Entry>
+            <Picker Title="Tipo de estructura de baja tensión " SelectedItem="{Binding TipoEstructura}" >
+                <Picker.Items>
+                    <x:String>Terminal</x:String>
+                    <x:String>Retención</x:String>
+                    <x:String>Suspensión</x:String>
+                </Picker.Items>
+            </Picker>
+            <Button
+             Command="{Binding Poste2Command}"
+             Text="Continuar"
+             BackgroundColor="{StaticResource MainColor}"
+             TextColor="{StaticResource BackgroundColor}"           
+             HorizontalOptions="Center"
+             VerticalOptions="Center">
+            </Button>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

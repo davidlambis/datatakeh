@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DATATAKEH.Pages.SixthPage"
+             BackgroundColor="{StaticResource BackgroundColor}"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="logo" Order="Primary" Icon="logo_barra.png" Text="Item 1" Priority="0" />
+        <ToolbarItem Name="Cerrar Sesión" Order="Secondary" Command="{Binding NavigateCommand}"
+                     CommandParameter="LogoutPage"/>
+     
+    </ContentPage.ToolbarItems>
+
+    <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
+        <StackLayout BindingContext="{Binding NewEquipo}"
+            HorizontalOptions="FillAndExpand" VerticalOptions="Start" Padding="20" Spacing="20">
+
+            <Label
+                Text="EQUIPOS" 
+                TextColor="{StaticResource FontColor}" 
+                FontSize="24" 
+                FontAttributes="Bold" 
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+            </Label>
+            <BoxView
+            HeightRequest="3"
+            Color="{StaticResource AccentColor}">
+            </BoxView>
+            <Picker Title="Condición" SelectedItem="{Binding Condicion}" >
+                <Picker.Items>
+                    <x:String>Instalado</x:String>
+                    <x:String>Retirado</x:String>
+                    <x:String>Existente-encontrado</x:String>
+                    <x:String>Cambio o reemplazo</x:String>
+                </Picker.Items>
+            </Picker>
+            <Label
+                Text="¿Existe amplificador?" 
+                TextColor="{StaticResource FontColor}" 
+                FontSize="14" 
+                FontAttributes="Bold" 
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+            </Label>
+            <Picker SelectedItem="{Binding IsAmplificador}">
+                <Picker.Items>
+                    <x:String>Sí</x:String>
+                    <x:String>No</x:String>
+                </Picker.Items>
+            </Picker>
+            <Label
+                Text="¿Existe fuente?" 
+                TextColor="{StaticResource FontColor}" 
+                FontSize="14" 
+                FontAttributes="Bold" 
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+            </Label>
+            <Picker SelectedItem="{Binding IsFuente}">
+                <Picker.Items>
+                    <x:String>Sí</x:String>
+                    <x:String>No</x:String>
+                </Picker.Items>
+            </Picker>
+            <Label
+                Text="¿Existe caja distribuidora de señal acometida o pares?" 
+                TextColor="{StaticResource FontColor}" 
+                FontSize="14" 
+                FontAttributes="Bold" 
+                HorizontalTextAlignment="Center"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+            </Label>
+            <Picker SelectedItem="{Binding IsCaja}">
+                <Picker.Items>
+                    <x:String>Sí</x:String>
+                    <x:String>No</x:String>
+                </Picker.Items>
+            </Picker>
+            <Button
+             Command="{Binding EquipoCommand1}"
+             Text="Continuar"
+             BackgroundColor="{StaticResource MainColor}"
+             TextColor="{StaticResource BackgroundColor}"           
+             HorizontalOptions="Center"
+             VerticalOptions="Center">
+            </Button>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

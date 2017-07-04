@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DATATAKEH.Pages.SeventhPage"
+             BackgroundColor="{StaticResource BackgroundColor}"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="logo" Order="Primary" Icon="logo_barra.png" Text="Item 1" Priority="0" />
+        <ToolbarItem Name="Cerrar Sesión" Order="Secondary" Command="{Binding NavigateCommand}"
+                     CommandParameter="LogoutPage"/>
+    </ContentPage.ToolbarItems>
+    
+    <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
+        <StackLayout BindingContext="{Binding NewEquipo}"
+            HorizontalOptions="FillAndExpand" VerticalOptions="Start" Spacing="20" Padding="20">
+            <Label
+                Text="¿El equipo consume energía de ElectroHuila?" 
+                TextColor="{StaticResource FontColor}" 
+                FontSize="14" 
+                FontAttributes="Bold" 
+                HorizontalTextAlignment="Center"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+            </Label>
+            <Picker  SelectedItem="{Binding IsEnergia}">
+                <Picker.Items>
+                    <x:String>Sí</x:String>
+                    <x:String>No</x:String>
+                </Picker.Items>
+            </Picker>
+            <Entry
+             Text ="{Binding OtroEquipo, Mode=TwoWay}"       
+             Placeholder="Otros equipos instalados"
+             TextColor="{StaticResource FontColor}">
+            </Entry>
+            <Entry
+             Text ="{Binding CodigoPlaca, Mode=TwoWay}"          
+             Placeholder="Código placa del equipo"
+             TextColor="{StaticResource FontColor}">
+            </Entry>
+            <Button
+             Command="{Binding EquipoCommand2}"
+             Text="Continuar"
+             BackgroundColor="{StaticResource MainColor}"
+             TextColor="{StaticResource BackgroundColor}"           
+             HorizontalOptions="Center"
+             VerticalOptions="Center">
+            </Button>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

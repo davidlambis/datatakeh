@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DATATAKEH.Pages.FourthPage"
+             BackgroundColor="{StaticResource BackgroundColor}"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="logo" Order="Primary" Icon="logo_barra.png" Text="Item 1" Priority="0" />
+        <ToolbarItem Name="Cerrar Sesión" Order="Secondary" Command="{Binding NavigateCommand}"
+                     CommandParameter="LogoutPage"/>
+      
+    </ContentPage.ToolbarItems>
+    
+    <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
+        <StackLayout BindingContext="{Binding NewPoste}"
+            HorizontalOptions="FillAndExpand" VerticalOptions="Start" Spacing="20" Padding="20">
+        <Label
+                Text="¿Está el cable sobre las redes de BT?" 
+                TextColor="{StaticResource FontColor}" 
+                FontSize="14" 
+                FontAttributes="Bold" 
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+        </Label>
+            <Picker SelectedItem="{Binding RedesBT}">
+                <Picker.Items >
+                <x:String>Sí</x:String>
+                <x:String>No</x:String>
+            </Picker.Items>
+        </Picker>
+        <Label
+                Text="¿Se requieren retenidas para el cable?" 
+                TextColor="{StaticResource FontColor}" 
+                FontSize="14" 
+                FontAttributes="Bold" 
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+        </Label>
+            <Picker SelectedItem="{Binding Retenidas}">
+                <Picker.Items>
+                <x:String>Sí</x:String>
+                <x:String>No</x:String>
+            </Picker.Items>
+        </Picker>
+            <Label
+                Text="Cables del operador" 
+                TextColor="{StaticResource FontColor}" 
+                FontSize="14" 
+                FontAttributes="Bold" 
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+            </Label>
+            <Picker Title="Existentes/Proyectados" SelectedItem="{Binding CablesOperador}">
+                <Picker.Items>
+                    <x:String>1</x:String>
+                    <x:String>2</x:String>
+                    <x:String>3</x:String>
+                    <x:String>4</x:String>
+                </Picker.Items>
+            </Picker>
+            <Picker Title="Total cables comunicación final" SelectedItem="{Binding CablesComunicacionFinal}">
+            <Picker.Items>
+                <x:String>1</x:String>
+                <x:String>2</x:String>
+                <x:String>3</x:String>
+                <x:String>4</x:String>
+            </Picker.Items>
+        </Picker>
+     <Button
+             Command="{Binding Poste3Command}"
+             Text="Continuar"
+             BackgroundColor="{StaticResource MainColor}"
+             TextColor="{StaticResource BackgroundColor}"           
+             HorizontalOptions="Center"
+             VerticalOptions="Center">
+        </Button> 
+    </StackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DATATAKEH.Pages.SecondPage"
+             BackgroundColor="{StaticResource BackgroundColor}"
+             BindingContext="{Binding Main, Source={StaticResource Locator}}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="logo" Order="Primary" Icon="logo_barra.png" Text="Item 1" Priority="0" />
+        <ToolbarItem Name="Cerrar Sesión" Order="Secondary" Command="{Binding NavigateCommand}"
+                     CommandParameter="LogoutPage"/>
+    </ContentPage.ToolbarItems>
+
+    <ScrollView Orientation="Vertical" VerticalOptions="FillAndExpand">
+        <StackLayout BindingContext="{Binding NewPoste}"
+            HorizontalOptions="FillAndExpand" VerticalOptions="Start" Spacing="20" Padding="20">
+
+            <Label
+                Text="NODO FÍSICO(POSTE)" 
+                TextColor="{StaticResource FontColor}" 
+                FontSize="24" 
+                FontAttributes="Bold" 
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+            </Label>
+            <BoxView
+            HeightRequest="3"
+            Color="{StaticResource AccentColor}">
+            </BoxView>
+           <!-- <StackLayout Orientation="Horizontal">
+                <Label
+                Text="Número de apoyo" 
+                TextColor="{StaticResource FontColor}" 
+                FontSize="14" 
+                FontAttributes="Bold" 
+                HorizontalOptions="Start"
+                VerticalOptions="Center">
+                </Label>
+                <Button
+                 Text="{Binding NumeroApoyo}"
+                 BackgroundColor="{StaticResource MainColor}"
+                 TextColor="{StaticResource BackgroundColor}"           
+                 HorizontalOptions="Center"
+                 VerticalOptions="Center">  
+                </Button>
+            </StackLayout> -->
+            <Entry
+             Text ="{Binding CodigoApoyo, Mode=TwoWay}"
+             Placeholder="Código de apoyo"
+             TextColor="{StaticResource FontColor}">
+            </Entry>
+            <Picker Title="Condición" SelectedItem="{Binding Condicion}" x:Name="pickerCondicion" >
+                <Picker.Items>
+                    <x:String>Instalado</x:String>
+                    <x:String>Retirado</x:String>
+                    <x:String>Encontrado</x:String>
+                    <x:String>Cambio</x:String>
+                </Picker.Items>
+            </Picker>
+            <Picker Title="Material" SelectedItem="{Binding Material}">
+                <Picker.Items>
+                    <x:String>Concreto</x:String>
+                    <x:String>Madera</x:String>
+                    <x:String>Torre Metálica</x:String>
+                    <x:String>Tubo</x:String>
+                </Picker.Items>
+            </Picker>
+            <Picker Title="Longitud Poste(mtrs)" SelectedItem="{Binding LongitudPoste}">
+                <Picker.Items>
+                    <x:String>8</x:String>
+                    <x:String>12</x:String>
+                    <x:String>24</x:String>
+                </Picker.Items>
+            </Picker>
+            <Picker Title="Resistencia mecánica(kg)" SelectedItem="{Binding ResistenciaMecanica}" >
+                <Picker.Items>
+                    <x:String>510</x:String>
+                    <x:String>750</x:String>
+                </Picker.Items>
+            </Picker>
+            <Picker Title="Estado" SelectedItem="{Binding Estado}">
+                <Picker.Items>
+                    <x:String>Bueno</x:String>
+                    <x:String>Malo</x:String>
+                </Picker.Items>
+            </Picker>
+            <Button
+             Command="{Binding Poste1Command}"
+             Text="Continuar"
+             BackgroundColor="{StaticResource MainColor}"
+             TextColor="{StaticResource BackgroundColor}"           
+             HorizontalOptions="Center"
+             VerticalOptions="Center">
+            </Button>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
